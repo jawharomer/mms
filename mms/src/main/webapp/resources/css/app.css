@@ -12,8 +12,7 @@ body {
 	color: black;
 }
 
-
-body{
+body {
 	font-size: 14px;
 }
 
@@ -48,19 +47,24 @@ a {
 	color: inherit;
 }
 
+
+
 /*Custom Classes*/
 .cus-inline-block {
 	display: inline-block !important;
 }
 
-.cus-table-borderless th,.cus-table-borderless td{
+.cus-table-borderless th, .cus-table-borderless td {
 	border: none;
 }
 
-.display th,.display tfoot th{
+.display th, .display tfoot th {
 	font-size: 12px;
 }
 
-
-
-
+.cus-note-td {
+	max-width: 40px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}

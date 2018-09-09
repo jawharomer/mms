@@ -12,77 +12,41 @@
 		<put-attribute name="pageCSS" value=""></put-attribute>
 		<put-attribute name="body" value="" />
 
-
 		<put-attribute name="footer"
 			value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />
 
 		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="app" />
 		</put-list-attribute>
-
 
 		<put-list-attribute name="requiredJSFiles">
 		</put-list-attribute>
 
-
 	</definition>
+
+
 
 	<!-- Admin page -->
 	<definition name="adminRoot" extends="base-definition">
 		<put-attribute name="title" value="Stock" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/root.jsp" />
-		<put-attribute name="adminBody"
-			value="/WEB-INF/views/admin/notifications.jsp" cascade="true" />
+		<put-attribute name="adminBody" value="" cascade="true" />
+
 		<put-list-attribute name="requiredCSSFiles">
 			<add-attribute value="bootstrap" />
 			<add-attribute value="font-awesome" />
 			<add-attribute value="jquery-ui" />
-
-			<add-attribute value="jquery-ui.theme" />
+			<add-attribute value="jquery.dataTables" />
+			<add-attribute value="incomes" />
 			<add-attribute value="app" />
 			<add-attribute value="admin" />
-			<add-attribute value="adminStock" />
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
 			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="app" />
-			<add-attribute value="adminStock" />
-		</put-list-attribute>
-	</definition>
-
-
-
-	<!-- Admin Stock page -->
-	<definition name="adminStock" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="adminBody"
-			value="/WEB-INF/views/admin/stock.jsp" cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="adminStock" />
-		</put-list-attribute>
-
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
 			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
 			<add-attribute value="jquery.dataTables" />
 			<!-- S-DataTableLib -->
 			<add-attribute value="dt/dataTables.buttons.min" />
@@ -93,440 +57,116 @@
 			<add-attribute value="dt/buttons.html5.min" />
 			<add-attribute value="dt/buttons.print.min" />
 			<!-- E-DataTableLib -->
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminStock" />
-		</put-list-attribute>
-	</definition>
-
-
-	<!-- CustomerOrder page -->
-	<definition name="adminAddCustomerOrder" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
-		<put-attribute name="adminBody"
-			value="/WEB-INF/views/customerOrder/addCustomerOrder.jsp"
-			cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
 			<add-attribute value="app" />
 			<add-attribute value="admin" />
 		</put-list-attribute>
 
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="addCustomerOrder" />
-		</put-list-attribute>
 	</definition>
 
 
 
-	<!-- EditCustomerOrder page -->
-	<definition name="adminEditCustomerOrder"
-		extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
+	<!-- Incomes -->
+	<definition name="incomes" extends="adminRoot">
+		<put-attribute name="title" value="Incomes" />
 		<put-attribute name="adminBody"
-			value="/WEB-INF/views/customerOrder/editCustomerOrder.jsp"
-			cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
+			value="/WEB-INF/views/income/incomes.jsp" cascade="true" />
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="incomes" />
 		</put-list-attribute>
 
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="editCustomerOrder" />
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="incomes" />
 		</put-list-attribute>
-
 	</definition>
-
-
-	<!-- Doctors page -->
-	<definition name="doctors" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
+	
+	
+	<definition name="getIncome" extends="adminRoot">
+		<put-attribute name="title" value="GetIncome" />
 		<put-attribute name="adminBody"
-			value="/WEB-INF/views/doctor/adminDoctors.jsp" cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="adminDoctors" />
+			value="/WEB-INF/views/income/income.jsp" cascade="true" />
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="income" />
 		</put-list-attribute>
 
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminDoctors" />
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="income" />
 		</put-list-attribute>
-
 	</definition>
-
-
-	<!-- DoctorCustomerOrders page -->
-	<definition name="doctorCustomerOrders" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
+	
+	
+	<!-- Incomes Categories -->
+	<definition name="incomeCategories" extends="adminRoot">
+		<put-attribute name="title" value="Income Categoreis" />
 		<put-attribute name="adminBody"
-			value="/WEB-INF/views/doctor/customerOrders.jsp" cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="doctorCustomerOrders" />
+			value="/WEB-INF/views/incomeCategory/incomeCategories.jsp" cascade="true" />
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="incomeCategories" />
 		</put-list-attribute>
 
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<!-- S-DataTableLib -->
-			<add-attribute value="dt/dataTables.buttons.min" />
-			<add-attribute value="dt/buttons.flash.min" />
-			<add-attribute value="dt/jszip.min" />
-			<add-attribute value="dt/pdfmake.min" />
-			<add-attribute value="dt/vfs_fonts" />
-			<add-attribute value="dt/buttons.html5.min" />
-			<add-attribute value="dt/buttons.print.min" />
-			<!-- E-DataTableLib -->
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminDoctorCustomerOrders" />
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="incomeCategories" />
 		</put-list-attribute>
-
 	</definition>
-
-
-	<!-- AdminCustomerOrders page -->
-	<definition name="adminCustomerOrders" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
+	
+	
+	
+	<!-- Expenses -->
+	<definition name="expenses" extends="adminRoot">
+		<put-attribute name="title" value="expenses" />
 		<put-attribute name="adminBody"
-			value="/WEB-INF/views/customerOrder/customerOrders.jsp"
-			cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="adminCustomerOrders" />
+			value="/WEB-INF/views/expense/expenses.jsp" cascade="true" />
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="expenses" />
 		</put-list-attribute>
 
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<!-- S-DataTableLib -->
-			<add-attribute value="dt/dataTables.buttons.min" />
-			<add-attribute value="dt/buttons.flash.min" />
-			<add-attribute value="dt/jszip.min" />
-			<add-attribute value="dt/pdfmake.min" />
-			<add-attribute value="dt/vfs_fonts" />
-			<add-attribute value="dt/buttons.html5.min" />
-			<add-attribute value="dt/buttons.print.min" />
-			<!-- E-DataTableLib -->
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminCustomerOrders" />
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="expenses" />
 		</put-list-attribute>
-
 	</definition>
-
-
-	<!-- AdminProductStepUps page -->
-	<definition name="adminProductStepUps" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
+	
+	
+	<definition name="getExpense" extends="adminRoot">
+		<put-attribute name="title" value="GetExpense" />
 		<put-attribute name="adminBody"
-			value="/WEB-INF/views/productStepUp/productStepUps.jsp"
-			cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="adminProductStepUps" />
+			value="/WEB-INF/views/expense/expense.jsp" cascade="true" />
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="expense" />
 		</put-list-attribute>
 
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<!-- S-DataTableLib -->
-			<add-attribute value="dt/dataTables.buttons.min" />
-			<add-attribute value="dt/buttons.flash.min" />
-			<add-attribute value="dt/jszip.min" />
-			<add-attribute value="dt/pdfmake.min" />
-			<add-attribute value="dt/vfs_fonts" />
-			<add-attribute value="dt/buttons.html5.min" />
-			<add-attribute value="dt/buttons.print.min" />
-			<!-- E-DataTableLib -->
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminProductStepUps" />
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="expense" />
 		</put-list-attribute>
-
 	</definition>
-
-
-	<!-- AdminVendors page -->
-	<definition name="adminVendors" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
+	
+	
+	
+	<!-- Expenses Categories -->
+	<definition name="expenseCategories" extends="adminRoot">
+		<put-attribute name="title" value="Expense Categoreis" />
 		<put-attribute name="adminBody"
-			value="/WEB-INF/views/vendor/adminVendors.jsp" cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="adminVendors" />
+			value="/WEB-INF/views/expenseCategory/expenseCategories.jsp" cascade="true" />
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="expenseCategories" />
 		</put-list-attribute>
 
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminVendors" />
-		</put-list-attribute>
-
-	</definition>
-
-
-
-	<!-- AdminProductCategories page -->
-	<definition name="adminProductCategories"
-		extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="adminBody"
-			value="/WEB-INF/views/productCategory/adminProductCategories.jsp"
-			cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="adminProductCategories" />
-		</put-list-attribute>
-
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminProductCategories" />
-		</put-list-attribute>
-
-	</definition>
-
-
-	<!-- Add OrderProductStepUp -->
-	<definition name="adminAddOrderProductStepUp"
-		extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
-		<put-attribute name="adminBody"
-			value="/WEB-INF/views/orderProductStepUp/addOrderProductStepUp.jsp"
-			cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="adminAddOrderProductStepUp" />
-		</put-list-attribute>
-
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminAddOrderProductStepUp" />
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="expenseCategories" />
 		</put-list-attribute>
 	</definition>
 
 
-	<!-- Edit OrderProductStepUp -->
-	<definition name="adminEditOrderProductStepUp"
-		extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
-		<put-attribute name="adminBody"
-			value="/WEB-INF/views/orderProductStepUp/editOrderProductStepUp.jsp"
-			cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="adminEditOrderProductStepUp" />
-		</put-list-attribute>
-
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminEditOrderProductStepUp" />
-		</put-list-attribute>
-	</definition>
-
-
-
-	<!-- OrderProductStepUps -->
-	<definition name="orderProductStepUps" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
-		<put-attribute name="adminBody"
-			value="/WEB-INF/views/orderProductStepUp/orderProductStepUps.jsp"
-			cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="jquery.dataTables" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="orderProductStepUps" />
-		</put-list-attribute>
-
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="jquery.dataTables" />
-			<!-- S-DataTableLib -->
-			<add-attribute value="dt/dataTables.buttons.min" />
-			<add-attribute value="dt/buttons.flash.min" />
-			<add-attribute value="dt/jszip.min" />
-			<add-attribute value="dt/pdfmake.min" />
-			<add-attribute value="dt/vfs_fonts" />
-			<add-attribute value="dt/buttons.html5.min" />
-			<add-attribute value="dt/buttons.print.min" />
-			<!-- E-DataTableLib -->
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="orderProductStepUps" />
-		</put-list-attribute>
-
-	</definition>
-
-
-	<!-- AdminVendors page -->
-	<definition name="adminVendors" extends="adminRoot">
-		<put-attribute name="title" value="Add Customer Order" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/root.jsp" />
-		<put-attribute name="adminBody"
-			value="/WEB-INF/views/vendor/adminVendors.jsp" cascade="true" />
-		<put-list-attribute name="requiredCSSFiles">
-			<add-attribute value="bootstrap" />
-			<add-attribute value="font-awesome" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery-ui.theme" />
-			<add-attribute value="app" />
-			<add-attribute value="admin" />
-			<add-attribute value="adminVendors" />
-		</put-list-attribute>
-
-		<put-list-attribute name="requiredJSFiles">
-			<add-attribute value="jquery" />
-			<add-attribute value="jquery-ui" />
-			<add-attribute value="jquery.serializeObject" />
-			<add-attribute value="jquery.serializejson" />
-			<add-attribute value="bootstrap" />
-			<add-attribute value="angular" />
-			<add-attribute value="app" />
-			<add-attribute value="adminVendors" />
-		</put-list-attribute>
-
-	</definition>
 
 
 </tiles-definitions>

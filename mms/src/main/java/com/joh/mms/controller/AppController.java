@@ -15,11 +15,5 @@ public class AppController {
 
 		return "login";
 	}
-	
-	@GetMapping("/")
-	public String appRoot() {
-		logger.info("appRoot->fired");
 
-		return "redirect:/adminRoot";
-	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.joh.mms.exception.CusDataIntegrityViolationException;
 import com.joh.mms.exception.ItemExistsException;
 
@@ -58,5 +59,13 @@ public class GlobalExceptionHandler {
 	public String handleNoResultException(HttpServletRequest request, Exception ex) {
 		logger.info("NoResultException occured:: URL=" + request.getRequestURL());
 		return "noResultException";
+	}
+
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler(JsonMappingException.class)
+	public String handleJsonMappingException(HttpServletRequest request, JsonMappingException ex) {
+		logger.info("JsonMappingException occured:: URL=" + request.getRequestURL());
+		ex.printStackTrace();
+		return "jsonMappingException";
 	}
 }
