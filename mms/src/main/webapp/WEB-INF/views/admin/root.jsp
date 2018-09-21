@@ -22,11 +22,16 @@
 				href="<c:url value="/expenses"/>?from=${currentDate}&to=${tomorrow}">
 					Expenses</a></li>
 			<li class="list-group-item"><a
+				href="<c:url value="/admin/revenue"/>">Revenues</a></li>
+			<li class="list-group-item"><a
 				href="<c:url value="/incomeCategories"/>"> Income Categories</a></li>
 
 
 			<li class="list-group-item"><a
 				href="<c:url value="/expenseCategories"/>"> Expense Categories</a></li>
+
+			<li class="list-group-item"><a
+				href="<c:url value="/checks"/>">Checks</a></li>
 
 
 		</ul>

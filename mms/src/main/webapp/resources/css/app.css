@@ -47,8 +47,6 @@ a {
 	color: inherit;
 }
 
-
-
 /*Custom Classes*/
 .cus-inline-block {
 	display: inline-block !important;
@@ -67,4 +65,20 @@ a {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
+}
+
+@media print {
+	body * {
+		visibility: hidden;
+	}
+	#section-to-print, #section-to-print * {
+		visibility: visible;
+	}
+	#section-to-print {
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+	}
 }

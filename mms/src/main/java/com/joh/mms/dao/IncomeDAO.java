@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.joh.mms.model.Income;
 
-public interface IncomeDAO extends CrudRepository<Income, Integer> {
+public interface IncomeDAO extends CrudRepository<Income, Integer>, IncomeDAOExt {
 	List<Income> findAllByTimeBetween(Date from, Date to);
 }

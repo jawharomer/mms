@@ -80,8 +80,8 @@
 			<add-attribute value="incomes" />
 		</put-list-attribute>
 	</definition>
-	
-	
+
+
 	<definition name="getIncome" extends="adminRoot">
 		<put-attribute name="title" value="GetIncome" />
 		<put-attribute name="adminBody"
@@ -96,13 +96,14 @@
 			<add-attribute value="income" />
 		</put-list-attribute>
 	</definition>
-	
-	
+
+
 	<!-- Incomes Categories -->
 	<definition name="incomeCategories" extends="adminRoot">
 		<put-attribute name="title" value="Income Categoreis" />
 		<put-attribute name="adminBody"
-			value="/WEB-INF/views/incomeCategory/incomeCategories.jsp" cascade="true" />
+			value="/WEB-INF/views/incomeCategory/incomeCategories.jsp"
+			cascade="true" />
 		<put-list-attribute name="requiredCSSFiles"
 			inherit="true">
 			<add-attribute value="incomeCategories" />
@@ -113,9 +114,9 @@
 			<add-attribute value="incomeCategories" />
 		</put-list-attribute>
 	</definition>
-	
-	
-	
+
+
+
 	<!-- Expenses -->
 	<definition name="expenses" extends="adminRoot">
 		<put-attribute name="title" value="expenses" />
@@ -131,8 +132,8 @@
 			<add-attribute value="expenses" />
 		</put-list-attribute>
 	</definition>
-	
-	
+
+
 	<definition name="getExpense" extends="adminRoot">
 		<put-attribute name="title" value="GetExpense" />
 		<put-attribute name="adminBody"
@@ -147,14 +148,15 @@
 			<add-attribute value="expense" />
 		</put-list-attribute>
 	</definition>
-	
-	
-	
+
+
+
 	<!-- Expenses Categories -->
 	<definition name="expenseCategories" extends="adminRoot">
 		<put-attribute name="title" value="Expense Categoreis" />
 		<put-attribute name="adminBody"
-			value="/WEB-INF/views/expenseCategory/expenseCategories.jsp" cascade="true" />
+			value="/WEB-INF/views/expenseCategory/expenseCategories.jsp"
+			cascade="true" />
 		<put-list-attribute name="requiredCSSFiles"
 			inherit="true">
 			<add-attribute value="expenseCategories" />
@@ -163,6 +165,43 @@
 		<put-list-attribute name="requiredJSFiles"
 			inherit="true">
 			<add-attribute value="expenseCategories" />
+		</put-list-attribute>
+	</definition>
+
+
+
+	<!-- Revenue -->
+	<definition name="adminAllRevenue" extends="adminRoot">
+		<put-attribute name="title" value="Expense Categoreis" />
+		<put-attribute name="adminBody"
+			value="/WEB-INF/views/income/allRevenue.jsp" cascade="true" />
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="expenseCategories" />
+		</put-list-attribute>
+
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="expenseCategories" />
+		</put-list-attribute>
+	</definition>
+
+
+
+	<!-- Checks -->
+	<definition name="adminChecks" extends="adminRoot">
+		<put-attribute name="title" value="Expense Categoreis" />
+		<put-attribute name="adminBody"
+			value="/WEB-INF/views/check/checks.jsp" cascade="true" />
+
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="adminChecks" />
+		</put-list-attribute>
+
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="adminChecks" />
 		</put-list-attribute>
 	</definition>
 
