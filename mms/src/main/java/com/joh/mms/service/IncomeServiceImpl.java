@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.joh.mms.dao.IncomeDAO;
+import com.joh.mms.domain.model.RevenueD;
 import com.joh.mms.model.Income;
 
 @Service
@@ -24,8 +25,7 @@ public class IncomeServiceImpl implements IncomeService {
 	public Income save(Income income) {
 		return incomeDAO.save(income);
 	}
-	
-	
+
 	@Override
 	public Income findOne(int id) {
 		return incomeDAO.findOne(id);
@@ -34,5 +34,15 @@ public class IncomeServiceImpl implements IncomeService {
 	@Override
 	public void delete(int id) {
 		incomeDAO.delete(id);
+	}
+
+	@Override
+	public RevenueD getCurrentRevenue() {
+		return incomeDAO.getCurrentRevenue();
+	}
+
+	@Override
+	public List<RevenueD> findAllRevenue(Date from, Date to) {
+		return incomeDAO.findAllRevenue(from, to);
 	}
 }

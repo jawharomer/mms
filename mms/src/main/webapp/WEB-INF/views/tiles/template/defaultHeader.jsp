@@ -9,10 +9,9 @@
 	</a>
 
 	<form action="<c:url value="/logout" />" method="POST">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}">
+		
 		<div>
-			<span><sec:authentication property="principal.username" /></span>
+			<span></span>
 			<button class="btn btn-outline-primary">logout</button>
 		</div>
 	</form>

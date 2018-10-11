@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.joh.mms.dao.IncomeDAO;
 import com.joh.mms.domain.model.RevenueD;
 import com.joh.mms.model.Check;
-import com.joh.mms.model.ExpenseCategory;
+import com.joh.mms.model.DollarToDinar;
 import com.joh.mms.service.CheckService;
+import com.joh.mms.service.DollarToDinarService;
+import com.joh.mms.service.IncomeService;
 
 @Controller
 @RequestMapping(path = "/checks")
@@ -28,7 +29,10 @@ public class CheckController {
 	private CheckService checkService;
 
 	@Autowired
-	private IncomeDAO incomeDAO;
+	private IncomeService incomeService;
+
+	@Autowired
+	private DollarToDinarService dollarToDinarService;
 
 	@GetMapping()
 	public String getAllCheck(Model model) {
@@ -43,7 +47,18 @@ public class CheckController {
 	public String getAddingCheck(Model model) {
 		logger.info("getAddingCheck->fired");
 
-		model.addAttribute("check", new Check());
+		Check check = new Check();
+
+		DollarToDinar dollarToDinar = dollarToDinarService.findCurrentDollarToDinar();
+		logger.info("dollarToDinar=" + dollarToDinar);
+		model.addAttribute("dollarToDinar", dollarToDinar);
+
+		RevenueD revenueD = incomeService.getCurrentRevenue();
+
+		check.setAmount(revenueD.getTotalIncome() - revenueD.getTotalExpense());
+
+		model.addAttribute("check", check);
+
 		return "check/addCheck";
 
 	}
@@ -57,11 +72,15 @@ public class CheckController {
 		logger.info("errors=" + result.getAllErrors());
 
 		if (result.hasErrors()) {
-			model.addAttribute("check", new Check());
+			DollarToDinar dollarToDinar = dollarToDinarService.findCurrentDollarToDinar();
+			logger.info("dollarToDinar=" + dollarToDinar);
+			model.addAttribute("dollarToDinar", dollarToDinar);
+
+			model.addAttribute("check", check);
 			return "check/addCheck";
 		} else {
 
-			RevenueD revenueD = incomeDAO.getCurrentRevenue();
+			RevenueD revenueD = incomeService.getCurrentRevenue();
 
 			check.setAmount(revenueD.getTotalIncome() - revenueD.getTotalExpense());
 

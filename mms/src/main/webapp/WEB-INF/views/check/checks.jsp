@@ -30,13 +30,12 @@
 					<td><fmt:formatDate value="${item.time}"
 							pattern="yyyy-MM-dd hh:mm:ss" />
 					<td>${item.amount}</td>
-					<td>${item.note}</td>
+					<td><span style="white-space: pre-line">${item.note}</span></td>
 				</tr>
 
 			</c:forEach>
 
 		</tbody>
-
 
 	</table>
 

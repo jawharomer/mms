@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 
 import com.joh.mms.domain.model.RevenueD;
 
@@ -16,14 +17,18 @@ public class IncomeDAOImpl implements IncomeDAOExt {
 	private EntityManager em;
 
 	@Override
-	public List<RevenueD> findAllRevenue() {
+	public List<RevenueD> findAllRevenue(Date from, Date to) {
 		List<RevenueD> revenueDs = new ArrayList<>();
-		Query query = em.createNativeQuery(
-				"SELECT JDATE,IFNULL(SUM(EXPENSE_AMOUNT),0) EXPENSE ,IFNULL(SUM(INCOME_AMOUNT),0)  INCOME\n" + "FROM \n"
-						+ "(\n" + "SELECT EXPENSE_AMOUNT,DATE(EXPENSE_TIME) JDATE  FROM EXPENSES) E\n"
-						+ "INNER JOIN (\n"
-						+ "SELECT INCOME_AMOUNT,DATE(INCOME_TIME) JDATE  FROM INCOMES ) I USING (JDATE)\n"
-						+ "GROUP BY JDATE\n" + "ORDER BY JDATE DESC");
+		Query query = em
+				.createNativeQuery("SELECT JDATE,IFNULL(SUM(EXPENSE_AMOUNT),0) EXPENSE ,IFNULL(SUM(INCOME_AMOUNT),0) \n"
+						+ "INCOME FROM (SELECT EXPENSE_AMOUNT,DATE(EXPENSE_TIME) JDATE  FROM EXPENSES WHERE EXPENSE_TIME BETWEEN ? AND ? ) E\n"
+						+ "RIGHT OUTER JOIN (SELECT INCOME_AMOUNT,DATE(INCOME_TIME) JDATE  FROM INCOMES  WHERE INCOME_TIME BETWEEN ? AND ? ) I USING (JDATE)\n"
+						+ "GROUP BY JDATE ORDER BY JDATE DESC;");
+
+		query.setParameter(1, from, TemporalType.DATE);
+		query.setParameter(2, to, TemporalType.DATE);
+		query.setParameter(3, from, TemporalType.DATE);
+		query.setParameter(4, to, TemporalType.DATE);
 
 		List<Object[]> resultList = query.getResultList();
 

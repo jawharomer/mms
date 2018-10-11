@@ -177,12 +177,12 @@
 			value="/WEB-INF/views/income/allRevenue.jsp" cascade="true" />
 		<put-list-attribute name="requiredCSSFiles"
 			inherit="true">
-			<add-attribute value="expenseCategories" />
+			<add-attribute value="allRevenue" />
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles"
 			inherit="true">
-			<add-attribute value="expenseCategories" />
+			<add-attribute value="allRevenue" />
 		</put-list-attribute>
 	</definition>
 
@@ -205,6 +205,25 @@
 		</put-list-attribute>
 	</definition>
 
+
+	<!-- DolarToDinars -->
+
+	<!-- Incomes -->
+
+	<definition name="dollarToDinars" extends="adminRoot">
+		<put-attribute name="title" value="dollarToDinars" />
+		<put-attribute name="adminBody"
+			value="/WEB-INF/views/dollarToDinar/dollarToDinars.jsp" cascade="true" />
+		<put-list-attribute name="requiredCSSFiles"
+			inherit="true">
+			<add-attribute value="dollarToDinars" />
+		</put-list-attribute>
+
+		<put-list-attribute name="requiredJSFiles"
+			inherit="true">
+			<add-attribute value="dollarToDinars" />
+		</put-list-attribute>
+	</definition>
 
 
 

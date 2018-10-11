@@ -35,8 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/login/**", "/logout").permitAll()
 				.antMatchers("/incomes/**", "/expenses/**", "/incomeCategories/**", "/expenseCategories/**")
 				.hasRole("MMS").anyRequest().authenticated().and().formLogin().loginPage("/login")
-				.defaultSuccessUrl("/admin").and().logout().logoutUrl("/logout").logoutSuccessUrl("/admin").permitAll()
-				.and().exceptionHandling().accessDeniedPage("/WEB-INF/views/accessDenied.jsp").and().csrf().disable();
+				.defaultSuccessUrl("/admin", true).and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
+				.permitAll().and().exceptionHandling().accessDeniedPage("/WEB-INF/views/accessDenied.jsp").and().csrf()
+				.disable();
 	}
 
 	@Autowired
