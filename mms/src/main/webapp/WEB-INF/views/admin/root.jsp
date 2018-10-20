@@ -15,6 +15,9 @@
 <section id="admin-body">
 	<section id="section-right" class="card">
 		<ul class="list-group">
+		<li class="list-group-item"><a
+				href="<c:url value="/dollarToDinars"/>">
+					Dollar To Dinar</a></li>
 			<li class="list-group-item"><a
 				href="<c:url value="/incomes"/>?from=${currentDate}&to=${tomorrow}">
 					Incomes</a></li>

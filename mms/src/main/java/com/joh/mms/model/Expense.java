@@ -18,6 +18,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.joh.mms.validator.ExpenseValidator;
 import com.joh.mms.validator.IncomeValidator;
 
@@ -36,8 +37,8 @@ public class Expense {
 
 	@Column(name = "EXPENSE_TIME", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp()
 	@ColumnDefault("CURRENT_TIMESTAMP")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date time;
 
 	@Column(name = "RECEIVED_BY")

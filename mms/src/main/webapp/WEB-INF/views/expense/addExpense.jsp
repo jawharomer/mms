@@ -1,6 +1,13 @@
+<%@ page import="java.util.Date"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<jsp:useBean id="now" class="java.util.Date" />
+
+<fmt:formatDate var="currentTime" value="${now}"
+	pattern="yyyy-MM-dd HH:mm:ss" />
 
 <div id="add-expense-container">
 	<sf:form id="add-expense-form" commandName="expense"
@@ -47,12 +54,17 @@
 							path="reference" /></td>
 					<td><sf:errors path="reference" /></td>
 				</tr>
-				
-				
+
+				<tr>
+					<td>Time</td>
+					<td><input class="form-control form-control-sm"
+						value="${currentTime}" name="time"></td>
+					<td><sf:errors path="time" /></td>
+				</tr>
+
 				<tr>
 					<td>Note</td>
-					<td><sf:textarea cssClass="form-control"
-							path="note" /></td>
+					<td><sf:textarea cssClass="form-control" path="note" /></td>
 					<td><sf:errors path="note" /></td>
 				</tr>
 

@@ -118,10 +118,11 @@
 
 			console.log("newStr=" + newStr);
 
+			total=0;
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
 
-				var calAmount = item.amount * item.unit;
+				var calAmount = +item.amount * +item.unit;
 
 				if (item.currentyType == "IQD") {
 					console.log("IQD");
@@ -147,7 +148,7 @@
 	function addCheck(event) {
 		event.preventDefault();
 		console.log("addCheck->fired");
-		if(total==${check.amount}){
+		if(total==cusPF(${check.amount})){
 		
 		var data = $("#add-check-form").serializeJSON();
 		console.log("data=", data);

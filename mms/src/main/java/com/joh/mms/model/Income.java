@@ -17,7 +17,9 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.joh.mms.validator.IncomeValidator;
 
 @Entity()
@@ -26,7 +28,7 @@ public class Income {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="I_INCOME")
+	@Column(name = "I_INCOME")
 	private Integer id;
 
 	@NotNull(message = "Amount is null", groups = { IncomeValidator.Insert.class })
@@ -35,8 +37,8 @@ public class Income {
 
 	@Column(name = "INCOME_TIME", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp()
 	@ColumnDefault("CURRENT_TIMESTAMP")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date time;
 
 	@Column(name = "RECEIVED_FROM")
@@ -45,9 +47,8 @@ public class Income {
 	@Column(name = "REFERENCE")
 	private String reference;
 
-	
-	@NotNull(message="Income Category is null",groups = { IncomeValidator.Insert.class })
-    @Valid()
+	@NotNull(message = "Income Category is null", groups = { IncomeValidator.Insert.class })
+	@Valid()
 	@ManyToOne()
 	@JoinColumn(name = "I_INCOME_CATEGORY", nullable = false)
 	private IncomeCategory incomeCategory;

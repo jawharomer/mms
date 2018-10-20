@@ -48,8 +48,8 @@ public class IncomeDAOImpl implements IncomeDAOExt {
 	@Override
 	public RevenueD getCurrentRevenue() {
 
-		Query query = em.createNativeQuery("SELECT IFNULL(SUM(INCOME_AMOUNT),0),IFNULL(SUM(EXPENSE_AMOUNT),0)\n"
-				+ "FROM INCOMES\n" + "JOIN EXPENSES");
+		Query query = em.createNativeQuery("SELECT (SELECT IFNULL(SUM(INCOME_AMOUNT),0) FROM INCOMES) INCOME\n" + 
+				",(SELECT IFNULL(SUM(EXPENSE_AMOUNT),0) FROM EXPENSES) EXPENSE");
 
 		Object[] columns = (Object[]) query.getSingleResult();
 
