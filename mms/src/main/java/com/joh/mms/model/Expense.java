@@ -38,7 +38,7 @@ public class Expense {
 	@Column(name = "EXPENSE_TIME", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	@ColumnDefault("CURRENT_TIMESTAMP")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss",locale = "ar-IQ",timezone = "Asia/Baghdad")
 	private Date time;
 
 	@Column(name = "RECEIVED_BY")

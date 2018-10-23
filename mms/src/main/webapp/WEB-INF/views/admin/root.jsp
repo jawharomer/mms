@@ -17,14 +17,14 @@
 		<ul class="list-group">
 		<li class="list-group-item"><a
 				href="<c:url value="/dollarToDinars"/>">
-					Dollar To Dinar</a></li>
-			<li class="list-group-item"><a
+					Exchange Currency</a></li>
+			<li class="list-group-item text-success"><a
 				href="<c:url value="/incomes"/>?from=${currentDate}&to=${tomorrow}">
 					Incomes</a></li>
-			<li class="list-group-item"><a
+			<li class="list-group-item text-danger"><a
 				href="<c:url value="/expenses"/>?from=${currentDate}&to=${tomorrow}">
 					Expenses</a></li>
-			<li class="list-group-item"><a
+			<li class="list-group-item text-info"><a
 				href="<c:url value="/admin/revenue"/>?from=${currentDate}&to=${tomorrow}">Revenues</a></li>
 			<li class="list-group-item"><a
 				href="<c:url value="/incomeCategories"/>"> Income Categories</a></li>

@@ -148,7 +148,11 @@
 	function addCheck(event) {
 		event.preventDefault();
 		console.log("addCheck->fired");
-		if(total==cusPF(${check.amount})){
+	    var totalCheck=Math.ceil(total-cusPF(${check.amount}));
+	    totalCheck= Math.abs(totalCheck);
+	    console.log("totalCheck=",totalCheck);
+	    
+		if(totalCheck<=10&&totalCheck>=0){
 		
 		var data = $("#add-check-form").serializeJSON();
 		console.log("data=", data);

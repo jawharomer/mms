@@ -22,6 +22,7 @@
 				<th>Time</th>
 				<th>Amount</th>
 				<th>Extra</th>
+				<th>F</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,6 +32,12 @@
 							pattern="yyyy-MM-dd hh:mm:ss" />
 					<td>${item.amount}</td>
 					<td><span style="white-space: pre-line">${item.note}</span></td>
+					<td>
+						<button class="btn btn-danger btn-sm"
+							onclick="deleteCheck(${item.id})">
+							<i class="fa fa-times"></i>
+						</button>
+					</td>
 				</tr>
 
 			</c:forEach>
@@ -40,8 +47,8 @@
 	</table>
 
 	<div class="row d-none d-print-block">
-		<div class="col-6 py-2">First Signature</div>
-		<div class="col-6 py-2">Second Signature</div>
+		<div class="col-6 py-2">Finance Signature</div>
+		<div class="col-6 py-2">Manager Signature</div>
 
 	</div>
 

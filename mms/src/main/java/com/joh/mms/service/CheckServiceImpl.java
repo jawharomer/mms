@@ -28,4 +28,10 @@ public class CheckServiceImpl implements CheckService {
 	public Check save(Check check) {
 		return checkDAO.save(check);
 	}
+	
+
+	@Override
+	public void delete(int id) {
+		 checkDAO.delete(id);
+	}
 }

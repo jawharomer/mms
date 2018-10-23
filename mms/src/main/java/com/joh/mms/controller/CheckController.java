@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -88,6 +89,18 @@ public class CheckController {
 
 			return "success";
 		}
+
+	}
+
+	@PostMapping(path = "/delete/{id}")
+	public String deleteCheck(@PathVariable int id) {
+		logger.info("deleteCheck->fired");
+
+		logger.info("id=" + id);
+
+		checkService.delete(id);
+
+		return "success";
 
 	}
 

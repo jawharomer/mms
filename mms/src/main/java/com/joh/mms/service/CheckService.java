@@ -8,4 +8,6 @@ public interface CheckService {
 
 	Check save(Check check);
 
+	void delete(int id);
+
 }

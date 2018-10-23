@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
@@ -17,11 +19,13 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = { "com.joh.mms.dao" })
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 @PropertySource(value = { "classpath:application.properties" })
 public class RepositoryConfig {
 
@@ -79,6 +83,11 @@ public class RepositoryConfig {
 		properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
 
 		return properties;
+	}
+
+	@Bean
+	public AuditorAware<String> auditorProvider() {
+		return () -> SecurityContextHolder.getContext().getAuthentication().getName();
 	}
 
 }

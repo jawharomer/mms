@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,15 +17,18 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.joh.mms.validator.IncomeValidator;
 
 @Entity()
 @Table(name = "INCOMES")
-public class Income {
+@EntityListeners(AuditingEntityListener.class)
+@Audited
+public class Income extends Auditable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,7 +42,7 @@ public class Income {
 	@Column(name = "INCOME_TIME", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	@ColumnDefault("CURRENT_TIMESTAMP")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss",locale = "ar-IQ",timezone = "Asia/Baghdad")
 	private Date time;
 
 	@Column(name = "RECEIVED_FROM")
@@ -47,10 +51,12 @@ public class Income {
 	@Column(name = "REFERENCE")
 	private String reference;
 
+	@NotAudited
 	@NotNull(message = "Income Category is null", groups = { IncomeValidator.Insert.class })
 	@Valid()
 	@ManyToOne()
 	@JoinColumn(name = "I_INCOME_CATEGORY", nullable = false)
+
 	private IncomeCategory incomeCategory;
 
 	@Column(name = "NOTE")
@@ -115,7 +121,9 @@ public class Income {
 	@Override
 	public String toString() {
 		return "Income [id=" + id + ", amount=" + amount + ", time=" + time + ", receivedFrom=" + receivedFrom
-				+ ", reference=" + reference + ", incomeCategory=" + incomeCategory + ", note=" + note + "]";
+				+ ", reference=" + reference + ", incomeCategory=" + incomeCategory + ", note=" + note + ", createdBy="
+				+ createdBy + ", createdDate=" + createdDate + ", lastModifiedBy=" + lastModifiedBy
+				+ ", lastModifiedDate=" + lastModifiedDate + "]";
 	}
 
 }
