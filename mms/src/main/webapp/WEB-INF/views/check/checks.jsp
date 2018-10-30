@@ -10,10 +10,6 @@
 		<button class="btn btn-success" onclick="getAddingCheck()">
 			<i class="fa fa-plus"></i>
 		</button>
-
-		<button class="btn btn-info" onclick="cusPrint('main')">
-			<i class="fa fa-print"></i>
-		</button>
 	</div>
 
 
