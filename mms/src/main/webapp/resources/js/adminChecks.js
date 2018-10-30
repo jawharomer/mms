@@ -35,3 +35,18 @@ function deleteCheck(id) {
 	});
 
 }
+
+function cusPrint(id) {
+	console.log("cusPrint->fired");
+	console.log("id=", id);
+
+	var divs = document.getElementsByClassName('section-to-print');
+
+	$(".section-to-print").each(function(index) {
+		$(this).removeClass("section-to-print");
+	});
+
+	$("#" + id).addClass('section-to-print');
+	window.print();
+
+}
